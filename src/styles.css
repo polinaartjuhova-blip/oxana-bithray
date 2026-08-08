@@ -132,6 +132,9 @@ input {
 }
 
 .tracklist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -780,10 +783,10 @@ input {
 
 @media (max-width: 520px) {
   .hero-stage {
-    min-height: auto;
-    align-items: flex-start;
-    padding-top: 1rem;
-    padding-bottom: 2.4rem;
+    min-height: 82svh;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 
   .album-flip {
@@ -811,11 +814,11 @@ input {
 
 @media (max-width: 430px) {
   .tracklist {
-    padding: 0.72rem 0.7rem 0.5rem;
+    padding: 0.56rem 0.7rem 0.5rem;
   }
 
-  .tracklist h2 {
-    font-size: 2.05rem;
+  .tracklist-title {
+    font-size: 1.85rem;
     line-height: 1;
   }
 

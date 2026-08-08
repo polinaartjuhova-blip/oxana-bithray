@@ -38,13 +38,19 @@ function App() {
 
   function unlockTrack(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (answer.trim().toLowerCase() === "croatia") {
+    const normalizedAnswer = answer.trim().toLowerCase();
+    if (normalizedAnswer === "croatia") {
       setError("");
       setWrongAttempts(0);
       setUnlocked(true);
       window.setTimeout(() => {
         document.getElementById("gift")?.scrollIntoView({ behavior: "smooth", block: "center" });
       }, 700);
+      return;
+    }
+
+    if (/[а-яё]/i.test(normalizedAnswer)) {
+      setError("Write the destination in English, please. Almost there 👀");
       return;
     }
 
@@ -158,15 +164,15 @@ function App() {
       )}
 
       <section className="relative mx-auto max-w-2xl px-5 pb-14 text-center sm:px-8">
-        <p className="text-2xl font-semibold text-white">Another year. Another season.</p>
+        <p className="text-2xl font-semibold text-white">С днём рождения, Оксана.</p>
         <p className="mx-auto mt-5 max-w-lg whitespace-pre-line text-lg leading-8 text-white/78">
-          {`Пусть в нём будет больше путешествий,
+          {`Пусть в этом году будет больше путешествий,
 музыки, красивых моментов,
 новых впечатлений
 и времени на себя.`}
         </p>
-        <p className="mt-7 text-3xl font-script text-white">Happy Birthday ❤️</p>
-        <p className="mt-4 text-lg text-hotpink">P.S. The best is yet to come.</p>
+        <p className="mt-7 text-3xl font-script text-white">С любовью ❤️</p>
+        <p className="mt-4 text-lg text-hotpink">P.S. Лучшее впереди.</p>
       </section>
 
       <footer className="relative border-t border-white/10 px-5 py-7 text-center text-xs font-bold tracking-[0.25em] text-white/52">
@@ -221,7 +227,7 @@ function TrackList({
 }) {
   return (
     <aside className="tracklist">
-      <h2 className="font-script text-4xl text-hotpink">Tracklist</h2>
+      <h2 className="tracklist-title font-script text-4xl text-hotpink">Tracklist</h2>
       <ol className="mt-4 grid gap-2 text-sm font-bold tracking-[0.12em] text-white/78">
         {tracks.map((track, index) => (
           <li key={track} className="track-shell">

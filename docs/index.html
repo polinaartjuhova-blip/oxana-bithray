@@ -252,6 +252,9 @@
       }
 
       .tracklist {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         height: 100%;
         width: 100%;
         overflow: hidden;
@@ -786,10 +789,10 @@
 
       @media (max-width: 520px) {
         .hero {
-          min-height: auto;
-          align-items: flex-start;
-          padding-top: 1rem;
-          padding-bottom: 2.4rem;
+          min-height: 82svh;
+          align-items: center;
+          padding-top: 2rem;
+          padding-bottom: 2rem;
         }
 
         .album-flip {
@@ -812,11 +815,11 @@
 
       @media (max-width: 430px) {
         .tracklist {
-          padding: 0.72rem 0.7rem 0.5rem;
+          padding: 0.56rem 0.7rem 0.5rem;
         }
 
         .tracklist h2 {
-          font-size: 2.05rem;
+          font-size: 1.85rem;
           line-height: 1;
         }
 
@@ -1113,10 +1116,10 @@
       </section>
 
       <section class="section message">
-        <p class="season">Another year. Another season.</p>
-        <p>Пусть в нём будет больше путешествий,<br />музыки, красивых моментов,<br />новых впечатлений<br />и времени на себя.</p>
-        <p class="happy">Happy Birthday ❤️</p>
-        <p class="ps">P.S. The best is yet to come.</p>
+        <p class="season">С днём рождения, Оксана.</p>
+        <p>Пусть в этом году будет больше путешествий,<br />музыки, красивых моментов,<br />новых впечатлений<br />и времени на себя.</p>
+        <p class="happy">С любовью ❤️</p>
+        <p class="ps">P.S. Лучшее впереди.</p>
       </section>
 
       <footer>LIMITED BIRTHDAY RELEASE • MADE WITH LOVE</footer>
@@ -1192,7 +1195,13 @@
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if (input.value.trim().toLowerCase() !== "croatia") {
+        const normalizedAnswer = input.value.trim().toLowerCase();
+        if (normalizedAnswer !== "croatia") {
+          if (/[а-яё]/i.test(normalizedAnswer)) {
+            error.textContent = "Write the destination in English, please. Almost there 👀";
+            error.hidden = false;
+            return;
+          }
           wrongAttempts += 1;
           error.textContent = wrongAttempts >= 3
             ? "Almost there: it starts with C and ends with A. Adriatic sea, first adventure. 🇭🇷"
