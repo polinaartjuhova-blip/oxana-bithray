@@ -130,10 +130,6 @@ function App() {
             </p>
 
             <div className="song-card">
-              <div className="song-meta">
-                <span>YOUR PERSONAL BONUS TRACK</span>
-                <strong>OXANA - FEARLESS SOUL</strong>
-              </div>
               <audio controls preload="metadata" src={SONG_URL}>
                 Your browser does not support the audio element.
               </audio>
