@@ -72,24 +72,11 @@ function App() {
         />
       </section>
 
-      <section className="relative mx-auto max-w-2xl px-5 pb-10 text-center sm:px-8">
-        <p className="animate-rise text-base font-medium leading-7 text-white/76 sm:text-lg">
-          Every album has a hidden track.
-          <br />
-          This one is yours. <span className="text-hotpink">💗</span>
-        </p>
-        <div className={`lock-line ${unlocked ? "is-unlocked" : ""}`}>
-          {unlocked ? <Unlock size={20} /> : <Lock size={20} />}
-          <span>BONUS TRACK #11</span>
-          <strong>{unlocked ? "UNLOCKED" : "LOCKED"}</strong>
-        </div>
-      </section>
-
       <section className="relative mx-auto max-w-xl px-5 pb-20 sm:px-8">
         <div className={`unlock-panel ${unlocked ? "solved" : ""}`}>
           <div className="mb-7 flex items-center justify-between gap-4">
             <div>
-              <p className="release-label mb-2">BONUS TRACK #11</p>
+              <p className="release-label mb-2">BONUS TRACK #7</p>
               <h2 className="font-display text-5xl tracking-[0.06em] text-white">UNLOCK BONUS TRACK</h2>
             </div>
             <div className="lock-disc" aria-hidden="true">
@@ -122,7 +109,7 @@ function App() {
           <div className="gift-panel animate-rise">
             <p className="release-label">BONUS TRACK UNLOCKED 🎵</p>
             <h2 className="mt-3 font-display text-5xl tracking-[0.06em] text-white sm:text-6xl">
-              11. ОКСАНА, ВЫДЫХАЙ
+              07. ОКСАНА, ВЫДЫХАЙ
             </h2>
 
             <div className="record-stage" aria-hidden="true">
@@ -244,7 +231,7 @@ function TrackList({
             onClick={() => onTrackPress(tracks.length)}
             type="button"
           >
-            <span>11</span>
+            <span>07</span>
             <span className="track-title">ОКСАНА, ВЫДЫХАЙ - {unlocked ? "UNLOCKED" : "LOCKED"}</span>
             {easterEgg?.track === tracks.length && <TrackEffect track={tracks.length} nonce={easterEgg.nonce} />}
           </button>
