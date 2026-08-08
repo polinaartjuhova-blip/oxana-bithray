@@ -1118,6 +1118,7 @@
       const sideBButton = document.getElementById("sideBButton");
       const lockStates = document.querySelectorAll("[data-lock-state]");
       const lockIcons = document.querySelectorAll("[data-lock-icon]");
+      let wrongAttempts = 0;
 
       coverButton.addEventListener("click", () => {
         albumFlip.classList.add("is-flipped");
@@ -1178,10 +1179,15 @@
       form.addEventListener("submit", (event) => {
         event.preventDefault();
         if (input.value.trim().toLowerCase() !== "croatia") {
+          wrongAttempts += 1;
+          error.textContent = wrongAttempts >= 3
+            ? "Almost there: it starts with C and ends with A. Adriatic sea, first adventure. 🇭🇷"
+            : "Not quite. Try another destination 👀";
           error.hidden = false;
           return;
         }
 
+        wrongAttempts = 0;
         error.hidden = true;
         input.disabled = true;
         form.querySelector("button").textContent = "TRACK UNLOCKED";

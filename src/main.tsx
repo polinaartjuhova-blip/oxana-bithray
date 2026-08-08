@@ -22,6 +22,7 @@ type EasterEgg = {
 function App() {
   const [answer, setAnswer] = React.useState("");
   const [error, setError] = React.useState("");
+  const [wrongAttempts, setWrongAttempts] = React.useState(0);
   const [unlocked, setUnlocked] = React.useState(false);
   const [easterEgg, setEasterEgg] = React.useState<EasterEgg | null>(null);
   const [coverFlipped, setCoverFlipped] = React.useState(false);
@@ -39,6 +40,7 @@ function App() {
     event.preventDefault();
     if (answer.trim().toLowerCase() === "croatia") {
       setError("");
+      setWrongAttempts(0);
       setUnlocked(true);
       window.setTimeout(() => {
         document.getElementById("gift")?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -46,7 +48,15 @@ function App() {
       return;
     }
 
-    setError("Not quite. Try another destination 👀");
+    setWrongAttempts((attempts) => {
+      const nextAttempts = attempts + 1;
+      setError(
+        nextAttempts >= 3
+          ? "Almost there: it starts with C and ends with A. Adriatic sea, first adventure. 🇭🇷"
+          : "Not quite. Try another destination 👀",
+      );
+      return nextAttempts;
+    });
   }
 
   function triggerTrack(track: number) {
