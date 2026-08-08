@@ -77,7 +77,7 @@ function App() {
       <div className="ocean-motion" aria-hidden="true" />
       <div className="spark-field" aria-hidden="true" />
 
-      <section className="relative mx-auto flex min-h-[82vh] w-full max-w-xl items-center justify-center px-5 py-8 sm:px-8 lg:py-12">
+      <section className="hero-stage relative mx-auto flex min-h-[82vh] w-full max-w-xl items-center justify-center px-5 py-8 sm:px-8 lg:py-12">
         <AlbumFlip
           flipped={coverFlipped}
           unlocked={unlocked}
