@@ -54,6 +54,11 @@ function App() {
       window.clearTimeout(easterTimer.current);
     }
     setEasterEgg({ track, nonce: Date.now() });
+    if (track === tracks.length) {
+      window.setTimeout(() => {
+        document.getElementById("unlock")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 180);
+    }
     easterTimer.current = window.setTimeout(() => setEasterEgg(null), 1050);
   }
 
@@ -72,7 +77,7 @@ function App() {
         />
       </section>
 
-      <section className="relative mx-auto max-w-xl px-5 pb-20 sm:px-8">
+      <section id="unlock" className="relative mx-auto max-w-xl px-5 pb-20 sm:px-8">
         <div className={`unlock-panel ${unlocked ? "solved" : ""}`}>
           <div className="mb-7 flex items-center justify-between gap-4">
             <div>

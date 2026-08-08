@@ -1058,7 +1058,7 @@
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="unlock">
         <div class="panel" id="unlockPanel">
           <div class="unlock-header">
             <div>
@@ -1163,6 +1163,11 @@
           void button.offsetWidth;
           button.classList.add("egg-active", `egg-${track + 1}`);
           button.insertAdjacentHTML("beforeend", trackEffect(track));
+          if (track === 6) {
+            window.setTimeout(() => {
+              document.getElementById("unlock").scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 180);
+          }
           window.setTimeout(() => {
             button.classList.remove("egg-active", `egg-${track + 1}`);
             button.querySelector(".star-spill, .paper-plane, .drum-stick, .tiny-car, .sunset-glow, .heart-flight, .track-ping")?.remove();
